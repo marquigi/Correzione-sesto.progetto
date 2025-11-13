@@ -1,1 +1,11 @@
-<p>prelievo.component works!</p>
+<h2>Prelievo</h2>
+<hr>
+<form [formGroup]="frm" (ngSubmit)="preleva()">
+    <label for="importo">Importo:</label>
+    <div class="input-group mt-3 mb-3 w-25">
+        <input type="text" class="form-control" formControlName="importo">
+        <span class="input-group-text">€</span>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Preleva</button>
+</form>
