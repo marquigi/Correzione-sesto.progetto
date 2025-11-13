@@ -27,9 +27,8 @@ export class BancaService {
   preleva(s: string) {
     if (s.length === 0) {
       // NOTA
-      return { esito: false, error: "Errore; inserisci l'importo" }
+      throw new Error("Inserire l'importo del prelievo")
     }
-    // NOTA
-    return { esito: true }
+
   }
 }
