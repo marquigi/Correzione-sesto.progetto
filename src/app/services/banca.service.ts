@@ -25,6 +25,11 @@ export class BancaService {
   // il service ha come parametro il value dell'input type text e non
   // il number già verificato, validato, ecc.
   preleva(s: string) {
-
+    if (s.length === 0) {
+      // NOTA
+      return { esito: false, error: "Errore; inserisci l'importo" }
+    }
+    // NOTA
+    return { esito: true }
   }
 }
