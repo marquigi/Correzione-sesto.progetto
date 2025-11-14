@@ -1,1 +1,50 @@
-<p>deposito.operation works!</p>
+@if(mode){
+@if(mode === 'cash'){
+<h4>Deposito contanti</h4>
+@if(success){
+<div class="py-5 bg-success text-center text-light">
+    <h2>Operazione completata</h2>
+    <p>Tra poco verrai rediretto all homepage</p>
+</div>
+}@else {
+@if(alert_error){
+<div class="alert alert-danger my-3">
+    <strong>Attenzione: {{ alert_error }}</strong>
+</div>
+}
+<form [formGroup]="frm" (ngSubmit)="deposita()">
+    <label for="importo">Importo:</label>
+    <div class="input-group mt-3 mb-3 w-25">
+        <input type="text" class="form-control" formControlName="importo" id="importo">
+        <span class="input-group-text">€</span>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Deposita</button>
+</form>
+}
+}
+@if (mode === 'voucher') {
+<h4>Deposito assegni</h4>
+@if(success){
+<div class="py-5 bg-success text-center text-light">
+    <h2>Operazione completata</h2>
+    <p>Tra poco verrai rediretto all homepage</p>
+</div>
+}@else {
+@if(alert_error){
+<div class="alert alert-danger my-3">
+    <strong>Attenzione: {{ alert_error }}</strong>
+</div>
+}
+<form [formGroup]="frm" (ngSubmit)="deposita()">
+    <label for="importo">Importo:</label>
+    <div class="input-group mt-3 mb-3 w-25">
+        <input type="text" class="form-control" formControlName="importo" id="importo">
+        <span class="input-group-text">€</span>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Deposita</button>
+</form>
+}
+}
+}

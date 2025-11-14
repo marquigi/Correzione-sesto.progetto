@@ -9,8 +9,6 @@ export class BancaService {
   // NOTA
   private _saldo = 7000;
 
-  private curPipe = inject(CurrencyPipe);
-
   constructor() { }
 
   // Getter typescript: definisce la proprietà "saldo" che è
@@ -18,7 +16,7 @@ export class BancaService {
   // Il Getter restituisce il valore della private property _saldo
   get saldo() {
     // NOTA
-    return `${this.curPipe.transform(this._saldo, 'EUR', 'symbol', '.2-2')}`;
+    return `€ ${this._saldo}`;
   }
 
   // Per dimostrare il controllo degli errori,
@@ -42,6 +40,19 @@ export class BancaService {
     }
 
     this._saldo -= v;
+  }
+  deposita(s: string) {
+    if (s.length === 0) {
+      // NOTA
+      throw new Error("Inserire l'importo del deposito")
+    }
 
+    // NOTA
+    const v = parseFloat(s);
+    if (isNaN(v)) {
+      throw new Error('Importo non valido')
+    }
+
+    this._saldo += v;
   }
 }
