@@ -10,6 +10,8 @@ import { BancaService } from '../../services/banca.service';
 })
 export class PrelievoComponent {
 
+  alert_error?: string;
+  success = false;
   private bancaService = inject(BancaService)
 
   frm = new FormGroup({
@@ -27,7 +29,7 @@ export class PrelievoComponent {
     // NOTA
     // Qualsiasi errore esca fuori, lo prendo
     catch (e: any) {
-      alert(e.message)
+      this.alert_error = e.message;
     }
   }
 

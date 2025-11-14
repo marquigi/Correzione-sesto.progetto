@@ -30,5 +30,18 @@ export class BancaService {
       throw new Error("Inserire l'importo del prelievo")
     }
 
+    // NOTA
+    const v = parseFloat(s);
+    if (isNaN(v)) {
+      throw new Error('Importo non valido')
+    }
+
+    // NOTA
+    if (v > this._saldo) {
+      throw new Error(`Importo non disponibile, valore massimo prelevabile ${this._saldo}`)
+    }
+
+    this._saldo -= v;
+
   }
 }
